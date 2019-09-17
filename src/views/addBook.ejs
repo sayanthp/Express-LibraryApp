@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>
+        <%=title%>
+    </title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+    <link href="/css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="navbar navbar-bright navbar-fixed-top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a href="/" class="navbar-brand">Home</a>
+            </div>
+            <nav class="collapse navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    <%for(let i=0;i<nav.length;++i){%>
+                        <li>
+                            <a href="<%=nav[i].link%>">
+                                <%=nav[i].title%>
+                            </a>
+                        </li>
+                        <%}%>
+                </ul>
+                <ul class="nav navbar-right navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+                        <ul class="dropdown-menu" style="padding:12px;">
+                            <form class="form-inline">
+                                <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+                            </form>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <script src="/js/formValidate.js"></script>
+    <div id="masthead">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h1>
+                        <%=title%>
+                            <p class="lead"></p>
+                    </h1>
+                </div>
+                <div class="col-md-5">
+                    <div class="well well-lg">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /cont -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="top-spacer"> </div>
+                </div>
+            </div>
+        </div>
+        <!-- /cont -->
+
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="panel">
+                    <div class="panel-body">
+
+
+
+                        <!--/stories-->
+                        <form action="<%if(flagUpdate==0){%>/admin/addBook/add<%}else{%>/admin/update-book/update/<%=id%><%}%>" method="get" name="addBook">
+                            <div class="form-group">
+                                <label for="name" class="cols-sm-2 control-label">Name of Book </label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" value="<%if(flagUpdate==1){%><%=book.title%><%}%>" name="title" id="name" placeholder="Enter the  name of Book" />
+                                    </div>
+                                    <div class="message" id="message_name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="genre" class="cols-sm-2 control-label">Genre</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" name="genre" value="<%if(flagUpdate==1){%><%=book.genre%><%}%>" id="genre" value="" placeholder="Enter the genre of the book" />
+                                    </div>
+                                    <div class="message" id="message_genre">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="author name" class="cols-sm-2 control-label">Name of Author</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
+                                        <input type="text" class="form-control" value="<%if(flagUpdate==1){%><%=book.authorname%><%}%>" name="authorname" id="aname" value="" placeholder="Enter the name of author" />
+                                    </div>
+                                    <div class="message" id="message_Aname">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="bio" class="cols-sm-2 control-label">Bio</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i  class ="fa fa-info" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" name="Bio" value="<%if(flagUpdate==1){%><%=book.Bio%><%}%>" id="Bio" value="" placeholder="Enter Bio" />
+                                    </div>
+                                    <div class="message" id="message_Bio">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image" class="cols-sm-2 control-label">Book's Photo</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i  class ="fa fa-picture-o" aria-hidden="true"></i></span>
+                                        <input type="url" name="image" placeholder=" Paste the image url here  " id="img"><br>
+                                        <!-- <img src="" height="200" alt="Image preview..."> -->
+                                    </div>
+                                    <div class="message" id="message_img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="language" class="cols-sm-2 control-label">Language</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class ="fa fa-language" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" value="<%if(flagUpdate==1){%><%=book.language%><%}%>" name="language" id="lang" value="" placeholder="Enter the language" />
+                                    </div>
+                                    <div class="message" id="message_lang">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block login-button" onclick="addBook()">Add Book or Update Book</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <!--/stories-->
+
+
+                    <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <!--/col-12-->
+    </div>
+    </div>
+
+
+    <hr>
+
+    <div class="container" id="footer">
+        <div class="row">
+            <div class="col col-sm-12">
+
+                <h1>Follow Us</h1>
+                <div class="btn-group">
+                    <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
+                    <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
+                    <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <hr>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="list-inline">
+                        <li><i class="icon-facebook icon-2x"></i></li>
+                        <li><i class="icon-twitter icon-2x"></i></li>
+                        <li><i class="icon-google-plus icon-2x"></i></li>
+                        <li><i class="icon-pinterest icon-2x"></i></li>
+                    </ul>
+
+                </div>
+                <div class="col-sm-6">
+                    <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- script references -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/formValidate.js"></script>
+</body>
+
+</html>
